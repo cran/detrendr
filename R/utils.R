@@ -1,6 +1,6 @@
 translate_parallel <- function(parallel) {
   parallel <- parallel[1]
-  if (BBmisc::isFALSE(parallel)) {
+  if (rlang::is_false(parallel)) {
     n_cores <- 1
   } else if (isTRUE(parallel)) {
     n_cores <- parallel::detectCores()

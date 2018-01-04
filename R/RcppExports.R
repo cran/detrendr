@@ -9,18 +9,6 @@ mean_cols_ <- function(cols) {
     .Call(`_detrendr_mean_cols_`, cols)
 }
 
-med_reflect_extend_rows_ <- function(current, original, extend_both_sides_by, preserve_mean, smooth) {
-    .Call(`_detrendr_med_reflect_extend_rows_`, current, original, extend_both_sides_by, preserve_mean, smooth)
-}
-
-med_reflect_extend_pillars_ <- function(current, original, extend_both_sides_by, preserve_mean = FALSE, smooth = FALSE) {
-    .Call(`_detrendr_med_reflect_extend_pillars_`, current, original, extend_both_sides_by, preserve_mean, smooth)
-}
-
-med_reflect_extend_ <- function(vec, orig, extend_both_sides_by, preserve_mean = FALSE, smooth = FALSE) {
-    .Call(`_detrendr_med_reflect_extend_`, vec, orig, extend_both_sides_by, preserve_mean, smooth)
-}
-
 mean_pillars_ <- function(arr3d) {
     .Call(`_detrendr_mean_pillars_`, arr3d)
 }
@@ -69,32 +57,32 @@ myrpois_frames_t_ <- function(means, frame_length, seed) {
     .Call(`_detrendr_myrpois_frames_t_`, means, frame_length, seed)
 }
 
-boxcar_smooth_rows_ <- function(extended, extended_both_sides_by, l) {
-    .Call(`_detrendr_boxcar_smooth_rows_`, extended, extended_both_sides_by, l)
+boxcar_smooth_rows_ <- function(mat, l) {
+    .Call(`_detrendr_boxcar_smooth_rows_`, mat, l)
 }
 
-boxcar_smooth_pillars_ <- function(extended, extended_both_sides_by, l) {
-    .Call(`_detrendr_boxcar_smooth_pillars_`, extended, extended_both_sides_by, l)
+boxcar_smooth_pillars_ <- function(arr, l) {
+    .Call(`_detrendr_boxcar_smooth_pillars_`, arr, l)
 }
 
-exp_smooth_rows_ <- function(extended, extended_both_sides_by, tau, l) {
-    .Call(`_detrendr_exp_smooth_rows_`, extended, extended_both_sides_by, tau, l)
+exp_smooth_rows_ <- function(mat, tau, l) {
+    .Call(`_detrendr_exp_smooth_rows_`, mat, tau, l)
 }
 
-exp_smooth_pillars_ <- function(extended, extended_both_sides_by, tau, l) {
-    .Call(`_detrendr_exp_smooth_pillars_`, extended, extended_both_sides_by, tau, l)
+exp_smooth_pillars_ <- function(arr, tau, l) {
+    .Call(`_detrendr_exp_smooth_pillars_`, arr, tau, l)
 }
 
-boxcar_smooth <- function(extended, extended_both_sides_by, l) {
-    .Call(`_detrendr_boxcar_smooth`, extended, extended_both_sides_by, l)
+boxcar_smooth <- function(vec, l) {
+    .Call(`_detrendr_boxcar_smooth`, vec, l)
 }
 
-weighted_smooth <- function(extended, extended_both_sides_by, weights, weight_sum) {
-    .Call(`_detrendr_weighted_smooth`, extended, extended_both_sides_by, weights, weight_sum)
+weighted_smooth <- function(vec, weights) {
+    .Call(`_detrendr_weighted_smooth`, vec, weights)
 }
 
-exp_smooth <- function(extended, extended_both_sides_by, tau, l) {
-    .Call(`_detrendr_exp_smooth`, extended, extended_both_sides_by, tau, l)
+exp_smooth <- function(vec, tau, l) {
+    .Call(`_detrendr_exp_smooth`, vec, tau, l)
 }
 
 square_root_ <- function(x) {
