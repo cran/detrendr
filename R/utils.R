@@ -1,39 +1,17 @@
 translate_parallel <- function(parallel) {
-  parallel <- parallel[1]
-  if (rlang::is_false(parallel)) {
-    n_cores <- 1
-  } else if (isTRUE(parallel)) {
+  checkmate::assert(checkmate::check_int(parallel),
+                    checkmate::check_logical(parallel, len = 1))
+  n_cores <- 1
+  if (isTRUE(parallel)) {
     n_cores <- parallel::detectCores()
   } else if (is.numeric(parallel)) {
-    n_cores <- floor(parallel)
+    n_cores <- parallel
     if (n_cores > parallel::detectCores()) n_cores <- parallel::detectCores()
-  } else {
-    stop("If parallel is not TRUE or FALSE, then it must be numeric.")
   }
   n_cores
 }
 
-signif_to_l <- function(tau, signif) {
-  stopifnot(signif > 0, signif < 1)
-  floor(- tau * log(signif))
-}
-
-mat_to_col_list <- function(mat) {
-  lapply(seq_len(ncol(mat)), function(i) mat[, i])
-}
-
 rand_seed <- function() sample.int(2 ^ 30, 1)
-
-can_be_integer <- function(x) {
-  isTRUE(all.equal(x, floor(x), check.attributes = FALSE))
-}
-
-frames_to_list <- function(img) {
-  if (is.matrix(img)) return(list(img))
-  d <- dim(img)
-  stopifnot(length(d) == 3)
-  purrr::map(seq_len(d[3]), ~ img[, , .])
-}
 
 #' Apply a function to each pillar of a 3-dimensional array.
 #'
