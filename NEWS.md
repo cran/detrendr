@@ -1,3 +1,10 @@
+### 0.5.0
+
+#### NEW FEATURES
+* The package no longer depends on `RSAGA`, making it lighter.
+* _Robin Hood_ detrending has been added.
+
+
 ### 0.4.0
 
 #### NEW FEATURES

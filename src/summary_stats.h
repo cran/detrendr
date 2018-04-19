@@ -10,6 +10,8 @@
 #include <functional>
 #include <iterator>
 
+#include <Rcpp.h>
+
 template <class Vec>
 int myprod(const Vec& vec) {
   return std::accumulate(vec.begin(), vec.end(), 1.0, std::multiplies<int>());
@@ -40,8 +42,24 @@ double myvar(const Vec& vec) {
 }
 
 template <class Vec>
+double myvar(const Vec& vec, const double mean) {
+  double accum = 0.0;
+  double diff;
+  std::for_each(std::begin(vec), std::end(vec), [&](const double vec_elem) {
+    diff = vec_elem - mean;
+    accum += diff * diff;
+  });
+  return accum / (vec.size() - 1);
+}
+
+template <class Vec>
 double brightness(Vec& vec) {
   return myvar(vec) / mymean(vec);
+}
+
+template <class Vec>
+double brightness(Vec& vec, const double mean) {
+  return myvar(vec, mean) / mean;
 }
 
 template <class T>
@@ -58,5 +76,8 @@ double mymedian(std::vector<T>& vec) {
   }
   return med;
 }
+
+bool int_anyNA(Rcpp::IntegerVector x);
+bool dbl_anyNA(Rcpp::NumericVector x);
 
 #endif  // DETRENDR_SUMMARY_STATS_
