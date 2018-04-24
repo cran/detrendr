@@ -1,7 +1,7 @@
-9b25deadfa478c5087fbabc9315fa02c *DESCRIPTION
+10e635dd5142eff156dfe32d55b32610 *DESCRIPTION
 a41956e263881aa339bfb8708462e69a *LICENSE
 45a078f6ed0065f45e654924829805d4 *NAMESPACE
-5accd19c9b6112c2e2642bb4e028e6f3 *NEWS.md
+90905b11d051256339d22651e02da00f *NEWS.md
 770e74ee1388f392fa9b77a5515b32e0 *R/RcppExports.R
 46ef7c2147c6b415af9a9cc98b893380 *R/best_degree.R
 67a48326d16e013be2f58c8c53ba8002 *R/best_l.R
@@ -26,7 +26,7 @@ deec836e275e2a74c8173fedf0c66951 *build/vignette.rds
 e0b9a397330590ee662d7ab2934f3f2b *inst/CITATION
 60bcfb73cf5b23ffa58ef732d9c7c6d7 *inst/doc/detrendr.R
 5069d007fe1cf3e5533255d8254c9800 *inst/doc/detrendr.Rmd
-8dc9e4fc6570904e95932dacf0c52148 *inst/doc/detrendr.html
+0aecae6e584ad352b11e23a22e312472 *inst/doc/detrendr.html
 3874909c72e58d70de209544f1e44eca *inst/extdata/bleached.tif
 265a86df9c8a68294ac5ab0d12657fa0 *man/apply_on_pillars.Rd
 9df4835f3851812d1455d00ca33d52d5 *man/best_degree.Rd
@@ -72,10 +72,10 @@ f0d1874f74b0f18656a6cdc94b871e10 *tests/testthat/test-col_stats.R
 3db3df0865ab67936ac30d09e2915ba2 *tests/testthat/test-detrend.R
 0403b3a61bc3715a308d99bbc4887281 *tests/testthat/test-dir_detrend.R
 a7710b76fb787891a11a5f7e379c410a *tests/testthat/test-iterators.R
-72014d75e09d0a2a6b4c15237c96d5a7 *tests/testthat/test-myrs.R
+593aaa809c7651ddd691f5f3e9e6abdb *tests/testthat/test-myrs.R
 b45549a906f7bd1b5444d11efa771096 *tests/testthat/test-pillar_stats.R
 64a01d108418c3d576423c441687118d *tests/testthat/test-pillar_utils.R
 ccdc982b2492fe4e132f17fb6302c498 *tests/testthat/test-polynom.R
 d9bbe40967a7c31f6ab7eeb750bd9dbe *tests/testthat/test-smooth.R
-37858ef689118b0a1afc12db9c33746b *tests/testthat/test-utils.R
+9e8a3811a7cef6ffca63c3eaf33acb08 *tests/testthat/test-utils.R
 5069d007fe1cf3e5533255d8254c9800 *vignettes/detrendr.Rmd

@@ -1,7 +1,7 @@
 Package: detrendr
 Type: Package
 Title: Detrend Images
-Version: 0.5.0
+Version: 0.5.1
 Authors@R: c(person("Rory", "Nolan", email = "rorynoolan@gmail.com", 
                     role = c("aut", "cre", "cph")),
              person("Sergi", "Padilla-Parra", email = "spadilla@well.ox.ac.uk",
@@ -17,17 +17,17 @@ LazyData: true
 LinkingTo: Rcpp, RcppParallel
 SystemRequirements: GNU make
 Imports: Rcpp, RcppParallel, parallel, checkmate, magrittr, dplyr,
-        foreach, doParallel, iterators, purrr, ijtiff (>= 1.0.0),
+        foreach, doParallel, iterators, purrr, ijtiff (>= 1.1.0),
         autothresholdr (>= 1.2.0), rlang, stringr, filesstrings (>=
-        2.1.0), plyr
+        2.2.0), plyr
 URL: https://www.github.com/rorynolan/detrendr
 BugReports: https://www.github.com/rorynolan/detrendr/issues
 RoxygenNote: 6.0.1
 Suggests: testthat, knitr, rmarkdown, covr, abind, matrixStats
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2018-04-19 07:25:51 UTC; rnolan
+Packaged: 2018-04-24 14:38:07 UTC; rnolan
 Author: Rory Nolan [aut, cre, cph],
   Sergi Padilla-Parra [ths, cph]
 Repository: CRAN
-Date/Publication: 2018-04-19 10:56:59 UTC
+Date/Publication: 2018-04-24 15:47:16 UTC
