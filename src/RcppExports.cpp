@@ -5,6 +5,28 @@
 
 using namespace Rcpp;
 
+// int_anyNA
+bool int_anyNA(IntegerVector x);
+RcppExport SEXP _detrendr_int_anyNA(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(int_anyNA(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dbl_anyNA
+bool dbl_anyNA(NumericVector x);
+RcppExport SEXP _detrendr_dbl_anyNA(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(dbl_anyNA(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 // brightness_cols_
 NumericVector brightness_cols_(IntegerMatrix cols);
 RcppExport SEXP _detrendr_brightness_cols_(SEXP colsSEXP) {
@@ -517,6 +539,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_detrendr_int_anyNA", (DL_FUNC) &_detrendr_int_anyNA, 1},
+    {"_detrendr_dbl_anyNA", (DL_FUNC) &_detrendr_dbl_anyNA, 1},
     {"_detrendr_brightness_cols_", (DL_FUNC) &_detrendr_brightness_cols_, 1},
     {"_detrendr_brightness_cols_given_mean_", (DL_FUNC) &_detrendr_brightness_cols_given_mean_, 2},
     {"_detrendr_mean_cols_", (DL_FUNC) &_detrendr_mean_cols_, 1},

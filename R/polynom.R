@@ -1,9 +1,11 @@
 poly_fit_pillars <- function(arr3d, degree, parallel = FALSE) {
   d <- dim(arr3d)
   if (degree >= d[3]) {
-    stop("Your pillars are of length ", d[3], ". This is too short. ",
-         "To fit a polynomial of degree ", degree, ", your pillars must be ",
-         "of length at least ", d[3] + 1, ".")
+    stop(
+      "Your pillars are of length ", d[3], ". This is too short. ",
+      "To fit a polynomial of degree ", degree, ", your pillars must be ",
+      "of length at least ", d[3] + 1, "."
+    )
   }
   pillars_to_cols(arr3d, parallel = parallel) %>%
     poly_fit_cols(degree, parallel = parallel) %>%
@@ -14,28 +16,33 @@ poly_fit_cols <- function(mat, degree, parallel = FALSE) {
   degree <- floor(degree)
   nr <- nrow(mat)
   if (degree >= nr) {
-    stop("Your columns are of length ", nr, ". This is too short. ",
-         "To fit a polynomial of degree ", degree, ", your pillars must be ",
-         "of length at least ", nr + 1, ".")
+    custom_stop(
+      "Your columns are of length {nr}. This is too short. ",
+      "
+      To fit a polynomial of degree {degree}, your pillars must be
+      of length at least {degree + 1}.
+      "
+    )
   }
   x1 <- seq_len(nr)
   x <- stats::poly(x1, degree, raw = TRUE)
   n_cores <- translate_parallel(parallel)
   na_cols <- apply(mat, 2, anyNA)
   any_na_cols <- any(na_cols)
+  out <- mat %T>% {
+    .[] <- NA
+  }
   if (any_na_cols) {
     non_na_cols <- !na_cols
-    out <- mat %T>% {.[] <- NA}
-    mat <- mat[, non_na_cols]
+    mat <- mat[, non_na_cols, drop = FALSE]
   }
-  if (!is.matrix(mat)) mat <- matrix(mat, nrow = nrow(out))
   if (n_cores == 1) {
     fits <- stats::fitted(stats::lm(mat ~ x))
   } else {
     it <- iter_mat_col_sets(mat, n_cores)
     doParallel::registerDoParallel(n_cores)
     on.exit(doParallel::stopImplicitCluster())
-    fits <- foreach::foreach(cols = it, .combine = 'cbind') %dopar% {
+    fits <- foreach::foreach(cols = it, .combine = "cbind") %dopar% {
       stats::fitted(stats::lm(cols ~ x))
     }
   }
@@ -46,4 +53,3 @@ poly_fit_cols <- function(mat, degree, parallel = FALSE) {
     fits
   }
 }
-

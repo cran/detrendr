@@ -8,9 +8,10 @@
 #' of the parameter used. This will be the `l`, `tau` or `degree` parameter for
 #' the respective methods.} \item{`auto`}{A boolean that is `TRUE` if the
 #' parameter was found automatically or `FALSE` if it was manually selected. }
-#' \item{`purpose`}{Either "FCS" or "FFS" to denote whether the detrending was
-#' done for the purpose of fluorescence correlation spectroscopy or fluorescence
-#' fluctuation spectroscopy calculations respectively.}}
+#' \item{`purpose`}{Either `"FCS"` or `"FFS"` to denote whether the detrending
+#' was done for the purpose of fluorescence correlation spectroscopy or
+#' fluorescence fluctuation spectroscopy calculations respectively. `purpose` is
+#' not required for _Robin Hood_ detrending.}}
 #'
 #' Sometimes when detrending, you can get slight negative values in the
 #' detrended image. These values should really just be zero, so this constructor
@@ -26,7 +27,7 @@
 #' @param parameter A number. The detrend parameter used. One per channel.
 #' @param auto Logical. Was automatic detrending used? One per channel.
 #' @param purpose Either `"FCS"` or `"FFS"`. Was the image detrended for the
-#'   purpose of doing FCS or FFS calculations? See [detrending]. `purpose`` is
+#'   purpose of doing FCS or FFS calculations? See [detrending]. `purpose` is
 #'   not required for _Robin Hood_ detrending.
 #'
 #' @return An object of class `detrended_img`.
@@ -36,34 +37,46 @@ detrended_img <- function(img, method, parameter, auto, purpose = NULL) {
   checkmate::assert_array(img, min.d = 3, max.d = 4)
   checkmate::assert_numeric(img)
   checkmate::assert_string(method)
-  if (startsWith("robinhood", method)) method <- "robinhood"
-  method %<>% filesstrings::match_arg(c("boxcar", "exponential", "polynomial",
-                                        "rh", "robinhood"),
-                                      ignore_case = TRUE)
+  if (stringi::stri_startswith_coll("robinhood", method)) method <- "robinhood"
+  method %<>% filesstrings::match_arg(c(
+    "boxcar", "exponential", "polynomial",
+    "rh", "robinhood"
+  ),
+  ignore_case = TRUE
+  )
   if (method == "rh") method <- "robinhood"
   if (method != "robinhood") {
     checkmate::assert_string(purpose)
     purpose %<>%
       filesstrings::match_arg(c("FCS", "FFS"), ignore_case = TRUE)
   }
-  if (!filesstrings::all_equal(floor(img), img))
+  if (!filesstrings::all_equal(floor(img), img)) {
     stop("Elements of a detrended_img must all be integers.")
-  if (length(dim(img)) == 3) dim(img) %<>% {c(.[1:2], 1, .[3])}
+  }
+  if (length(dim(img)) == 3) {
+    dim(img) %<>% {
+      c(.[1:2], 1, .[3])
+    }
+  }
   n_ch <- dim(img)[3]
   if (length(parameter) == 1) parameter %<>% rep(n_ch)
   if (length(parameter) != n_ch) {
-    stop("The length of the `parameter` argument must be equal to 1 or ",
-         "equal to the number of channels in `img`.", "\n",
-         "    * Your `img` has ", n_ch, " channel",
-         dplyr::if_else(n_ch == 1, "", "s"),
-         " and your `parameter` ",
-         "argument is of length ", length(parameter), ".")
+    custom_stop("
+      The length of the `parameter` argument must be equal to 1 or
+      equal to the number of channels in `img`.
+      ", "
+      Your `img` has {n_ch} channel{dplyr::if_else(n_ch == 1, '', 's')}
+      and your `parameter` argument is of length {length(parameter)}.
+      ")
   }
-  if (method == "robinhood")
+  if (method == "robinhood") {
     parameter[is.na(parameter)] <- 0
+  }
   img[img < 0] <- 0
-  img %<>% structure(method = method, parameter = parameter, auto = auto,
-                     purpose = purpose)
+  img %<>% structure(
+    method = method, parameter = parameter, auto = auto,
+    purpose = purpose
+  )
   class(img) %<>% c("detrended_img", .)
   img
 }
