@@ -1,7 +1,7 @@
-65273b725c903b4a7acf5aad5037422c *DESCRIPTION
+8fc6dca25057139406c2dae55be55014 *DESCRIPTION
 a41956e263881aa339bfb8708462e69a *LICENSE
 45a078f6ed0065f45e654924829805d4 *NAMESPACE
-1dff6977013a19420267cfaf5b1097ee *NEWS.md
+79f0e356f50345f99d978910a97b818a *NEWS.md
 82df123aedd7f6b23afc27cfc78c1c07 *R/RcppExports.R
 e451dde11ce84133ec3e853caab54544 *R/best_degree.R
 6a13ac5bc8e99c0fd88a8256e1d0742b *R/best_l.R
@@ -28,13 +28,13 @@ e0b9a397330590ee662d7ab2934f3f2b *inst/CITATION
 23668562dd10dfc935b77a51ca57c6c9 *inst/WORDLIST
 203586d4b521c4520c9e49a026be83d6 *inst/doc/batch-mode.R
 78ddb9a7c491a7379722ed6fa7fad784 *inst/doc/batch-mode.Rmd
-ddf9d76c9f716b8af1e7b4f8ea8cf6b1 *inst/doc/batch-mode.html
+7bf0f85d2cffc5e8a96c36065831c70d *inst/doc/batch-mode.html
 48aacffe486603701f3dc77ac3078ecb *inst/doc/linescan-data.R
 705bf92ea5343c78cd517d65ce154fcd *inst/doc/linescan-data.Rmd
 74a610f6807295cec8b694a0a148d450 *inst/doc/linescan-data.html
 ae2e384f807d5ac7c29c0ae48fb2ee37 *inst/doc/single-images.R
 0cefe582c39cb9d81f07a8770fea8970 *inst/doc/single-images.Rmd
-8a693735eabe55eaed48fb3abd77eede *inst/doc/single-images.html
+93c24a41df7a6243df24f296df8ad7f1 *inst/doc/single-images.html
 ef46d42e33873b9bf31eec5cfdf533e5 *inst/extdata/2ch100frame.tif
 f2ebf96a6da1517803ea579f64b7f544 *inst/extdata/bleached.tif
 2a1b2db67310aab5f0a4c56e10f4f476 *inst/extdata/linescan.tif
