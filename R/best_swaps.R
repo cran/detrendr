@@ -85,13 +85,13 @@ best_swaps <- function(img, quick = FALSE) {
     if (quick) {
       out <- (best_swaps_naive(img) - best_swaps_naive(pois_mean_img(img))) %>%
         relu() %>%
-        as.integer()
+        as.double()
       return(out)
     }
-    newest <- purrr::rerun(9, best_swaps_naive(img)) %>%
-      purrr::map_int(1)
+    newest <- purrr::map(seq_len(9), ~ best_swaps_naive(img)) %>%
+      purrr::map_dbl(1)
     if (filesstrings::all_equal(stats::median(newest), 0)) {
-      return(0L)
+      return(0)
     }
     mean_b_epss <- purrr::map_dbl(newest, ~ mean_b_eps(img, .))
     mean_b_epss_std_mad_rel <- std_mad_rel(mean_b_epss)
@@ -104,16 +104,18 @@ best_swaps <- function(img, quick = FALSE) {
       mean_b_epss %<>% c(mean_b_eps(img, new_best_swaps_naive))
       mean_b_epss_std_mad_rel <- std_mad_rel(mean_b_epss)
     }
-    overestimates <- purrr::rerun(
-      length(newest),
-      best_swaps_naive(pois_mean_img(img))
+    overestimates <- purrr::map(
+      seq_along(newest),
+      ~ best_swaps_naive(pois_mean_img(img))
     ) %>%
-      purrr::map_int(1)
-    (stats::median(newest) - stats::median(overestimates)) %>%
-      relu() %>%
-      as.integer()
+      purrr::map_dbl(1)
+    return(
+      (stats::median(newest) - stats::median(overestimates)) %>%
+        relu() %>%
+        as.double()
+    )
   } else {
-    purrr::map_int(seq_len(d[3]), ~ best_swaps(img[, , ., , drop = FALSE],
+    purrr::map_dbl(seq_len(d[3]), ~ best_swaps(img[, , ., , drop = FALSE],
       quick = quick
     ))
   }
@@ -288,5 +290,5 @@ best_swaps_naive <- function(img) {
   } else {
     out <- max_swaps
   }
-  as.integer(out)
+  out
 }
