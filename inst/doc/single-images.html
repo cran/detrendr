@@ -12,7 +12,7 @@
 
 <meta name="author" content="Rory Nolan" />
 
-<meta name="date" content="2020-08-02" />
+<meta name="date" content="2020-09-03" />
 
 <title>Detrending single images</title>
 
@@ -301,7 +301,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Detrending single images</h1>
 <h4 class="author">Rory Nolan</h4>
-<h4 class="date">2020-08-02</h4>
+<h4 class="date">2020-09-03</h4>
 
 
 
@@ -315,7 +315,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>The image can be read into R with the <code>read_tif()</code> command provided by the <code>ijtiff</code> package. We’ll assign it to a variable called <code>my_img</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;2ch100frame.tif&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;detrendr&quot;</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">print</span>(path)</a></code></pre></div>
-<pre><code>#&gt; [1] &quot;/private/var/folders/l_/2mwm03p55zg7zjykv084hhvr0000gn/T/RtmpQiV8sp/Rinst7a3c23b81852/detrendr/extdata/2ch100frame.tif&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;/private/var/folders/l_/2mwm03p55zg7zjykv084hhvr0000gn/T/RtmpSHF8ZU/Rinstee396f81fd5c/detrendr/extdata/2ch100frame.tif&quot;</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">my_img &lt;-<span class="st"> </span><span class="kw">read_tif</span>(path)</a></code></pre></div>
 <pre><code>#&gt; Reading 2ch100frame.tif: an 8-bit, 30x28 pixel image of
 #&gt; unsigned integer type. Reading 2 channels and 100 frames . . .</code></pre>

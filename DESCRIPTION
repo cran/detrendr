@@ -1,7 +1,7 @@
 Type: Package
 Package: detrendr
 Title: Detrend Images
-Version: 0.6.8
+Version: 0.6.9
 Authors@R: 
     c(person(given = "Rory",
              family = "Nolan",
@@ -26,9 +26,9 @@ Description: Detrend fluorescence microscopy image series for
     extended since then with the Robin Hood algorithm and thus contains
     unpublished work.
 License: BSD_3_clause + file LICENSE
-URL: https://rorynolan.github.io/detrendr,
-        https://www.github.com/rorynolan/detrendr#readme
-BugReports: https://www.github.com/rorynolan/detrendr/issues
+URL: https://rorynolan.github.io/detrendr/,
+        https://github.com/rorynolan/detrendr#readme
+BugReports: https://github.com/rorynolan/detrendr/issues
 Depends: R (>= 3.1)
 Imports: arrayhelpers (>= 1.1.0), autothresholdr (>= 1.3.3), checkmate
         (>= 1.9.3), doParallel, dplyr, filesstrings (>= 3.1.5),
@@ -47,10 +47,10 @@ LazyData: true
 RoxygenNote: 7.1.1
 SystemRequirements: GNU make
 NeedsCompilation: yes
-Packaged: 2020-08-01 23:12:26 UTC; rnolan
+Packaged: 2020-09-03 00:32:49 UTC; rnolan
 Author: Rory Nolan [aut, cre] (<https://orcid.org/0000-0002-5239-4043>),
   Luis Alvarez [ctb, cph] (<https://orcid.org/0000-0003-1316-1906>),
   Sergi Padilla-Parra [ctb, ths, cph]
     (<https://orcid.org/0000-0002-8010-9481>)
 Repository: CRAN
-Date/Publication: 2020-08-03 15:30:18 UTC
+Date/Publication: 2020-09-03 05:20:03 UTC
