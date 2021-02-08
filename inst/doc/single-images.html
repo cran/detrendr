@@ -12,49 +12,10 @@
 
 <meta name="author" content="Rory Nolan" />
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-02-08" />
 
 <title>Detrending single images</title>
 
-<style type="text/css">
-a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
-a.anchor-section::before {content: '#';}
-.hasAnchor:hover a.anchor-section {visibility: visible;}
-</style>
-<script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
-document.addEventListener('DOMContentLoaded', function() {
-  // Do nothing if AnchorJS is used
-  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
-    return;
-  }
-
-  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-
-  // Do nothing if sections are already anchored
-  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
-    return null;
-  }
-
-  // Use section id when pandoc runs with --section-divs
-  const section_id = function(x) {
-    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
-            ? x.id : '');
-  };
-
-  // Add anchors
-  h.forEach(function(x) {
-    const id = x.id || section_id(x.parentElement);
-    if (id === '') {
-      return null;
-    }
-    let anchor = document.createElement('a');
-    anchor.href = '#' + id;
-    anchor.classList = ['anchor-section'];
-    x.classList.add('hasAnchor');
-    x.appendChild(anchor);
-  });
-});
-</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -152,6 +113,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
+
 
 
 
@@ -349,7 +311,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Detrending single images</h1>
 <h4 class="author">Rory Nolan</h4>
-<h4 class="date">2021-01-13</h4>
+<h4 class="date">2021-02-08</h4>
 
 
 
@@ -363,7 +325,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>The image can be read into R with the <code>read_tif()</code> command provided by the <code>ijtiff</code> package. We’ll assign it to a variable called <code>my_img</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;2ch100frame.tif&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;detrendr&quot;</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">print</span>(path)</a></code></pre></div>
-<pre><code>#&gt; [1] &quot;/private/var/folders/l_/2mwm03p55zg7zjykv084hhvr0000gn/T/RtmplBl6G7/Rinst7d7c2630765/detrendr/extdata/2ch100frame.tif&quot;</code></pre>
+<pre><code>#&gt; [1] &quot;/private/var/folders/l_/2mwm03p55zg7zjykv084hhvr0000gn/T/Rtmpbjtztl/Rinst120343a0e80b7/detrendr/extdata/2ch100frame.tif&quot;</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">my_img &lt;-<span class="st"> </span><span class="kw">read_tif</span>(path)</a></code></pre></div>
 <pre><code>#&gt; Reading 2ch100frame.tif: an 8-bit, 30x28 pixel image of
 #&gt; unsigned integer type. Reading 2 channels and 100 frames . . .</code></pre>
